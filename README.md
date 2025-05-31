@@ -1,3 +1,4 @@
+![Project thumbnail](thumbnail.png)
 # Exploring the P300 in EEG Data  
 **Fabiana Ojeda 歐瑩忻 – Brainhack School 2025**
 
