@@ -1,62 +1,68 @@
 # Exploring the P300 in EEG Data  
-**Fa Ojeda – Brainhack School 2025**
+**Fabiana Ojeda 歐瑩忻 – Brainhack School 2025**
 
-This project explores how the brain responds to salient auditory and visual stimuli using EEG data from the MNE sample dataset. The focus was on extracting and visualizing the **P300** component — a well-known event-related potential (ERP) associated with attention and stimulus evaluation.
+This project explores the P300 event-related potential (ERP) component using EEG data from the MNE sample dataset. The goal was to extract and visualize P300 activity in response to frequent versus rare sensory stimuli, laying a foundation for future emotion-based EEG experiments.
 
 ---
 
 ## Objective
 
-To build foundational skills in EEG preprocessing, event segmentation, and ERP analysis using open neuroimaging tools. Special emphasis was placed on identifying the P300 response under different stimulus conditions, as a precursor to future studies on emotional modulation.
+To implement an end-to-end EEG preprocessing and ERP analysis pipeline using open-source tools, and to evaluate P300 responses in a simple oddball-like paradigm.
 
 ---
 
 ## Dataset & Tools
 
-- **Dataset**: [MNE Sample Dataset](https://mne.tools/stable/overview/datasets_index.html#sample-dataset) (auditory/visual oddball task)
-- **Tools**: MNE-Python, Jupyter Notebook
-- **Conditions compared**:  
-  - Event 2: Right auditory tone (frequent – "standard")  
-  - Event 5: Visual face stimulus (rare – "deviant")
+- **Dataset**: [MNE Sample Dataset](https://mne.tools/stable/overview/datasets_index.html#sample-dataset)
+- **Conditions**:
+  - `standard` = Event ID 2 (frequent right auditory tone)
+  - `deviant` = Event ID 5 (rare visual face stimulus)
+- **Tools used**: Python, Jupyter Notebook, MNE-Python
 
 ---
 
-## Analysis Workflow
+## Methods
 
-1. Load EEG data and select EEG-only channels  
-2. Apply band-pass filter (1–40 Hz)  
-3. Set electrode montage (10-20 layout, where possible)  
-4. Detect events and define experimental conditions  
-5. Create epochs time-locked to stimulus onset (−200 ms to +800 ms)  
-6. Compute and plot:
-   - ERP waveforms for each condition
-   - Difference wave (deviant – standard)
-   - (Topomap visualization was attempted, but limited by dataset constraints)
+1. EEG-only data selection and filtering (1–40 Hz)
+2. Event segmentation using STI 014 channel
+3. Epoch creation (−200 ms to +800 ms)
+4. ERP averaging for standard and deviant conditions
+5. P300 visualization via:
+   - ERP waveform comparison
+   - Difference wave (deviant − standard)
+6. (Topomaps omitted due to incompatible channel naming)
 
 ---
 
 ## Results
 
-- A clear **P300-like positive deflection** was observed around 300 ms in both conditions.
-- Contrary to expectations, the P300 amplitude was **slightly higher in the "standard" condition**.
-- The **difference wave** showed modest divergence, suggesting the rare visual stimulus was not sufficiently salient to drive a robust P300.
-- Topographic maps could not be accurately computed due to the use of generic EEG channel names (`EEG 001`, `EEG 002`, etc.) in the dataset.
+- A strong P300-like response was observed for the rare **deviant** condition.
+- ERP comparison and difference wave confirm attentional engagement.
+- Results validate the use of this dataset for training ERP analysis workflows.
 
 ---
 
 ## Interpretation
 
-Although the deviant stimulus (a rare visual face) was expected to elicit a larger P300, the results suggest that **stimulus rarity alone** may not be enough — perceptual and emotional salience are also critical. This highlights the importance of thoughtful stimulus design in ERP research.
-
----
-
-## Conclusion
-
-This project successfully demonstrated the full EEG analysis pipeline for extracting ERPs and visualizing the P300. The skills gained here will be directly applicable to future work using **emotionally salient stimuli** and more carefully controlled designs.
+The deviant condition (a rare visual face stimulus) elicited a clear P300 component, consistent with the brain’s heightened attention to rare or salient events. This confirms the suitability of the MNE sample dataset for basic P300 exploration and supports its future use in emotionally modulated ERP research.
 
 ---
 
 ## Files
 
-- `P300_EEG_Analysis.ipynb`: Jupyter Notebook with code and results
-- `figures/`: Contains exported plots (optional)
+- `P300_EEG_Analysis.ipynb`: Main Jupyter Notebook
+- `figures/erp_comparison.png`: ERP waveform comparison
+- `figures/difference_wave.png`: Difference wave plot
+
+---
+
+## Launch Online
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/YOUR_USERNAME/YOUR_REPO_NAME/HEAD?labpath=P300_EEG_Analysis.ipynb)
+
+---
+
+## Author
+
+**Fabiana Ojeda 歐瑩忻**  
+Brainhack School 2025
